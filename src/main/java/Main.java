@@ -9,7 +9,7 @@ public class Main {
 
         Polynomial a;
         Polynomial b;
-        try(var scanner = new Scanner(System.in)) {
+        try (var scanner = new Scanner(System.in)) {
             System.out.println("Reading 1st polynomial");
             a = polynomialReader.read(scanner);
             System.out.println("Reading 2nd polynomial");
