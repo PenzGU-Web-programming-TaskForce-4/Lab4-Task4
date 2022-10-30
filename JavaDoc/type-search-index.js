@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Polynomial.CalculationsIterator"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"Polynomial"},{"p":"<Unnamed>","l":"PolynomialReader"},{"p":"<Unnamed>","l":"Reader"}];updateSearchResults();
