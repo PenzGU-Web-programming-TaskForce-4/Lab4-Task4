@@ -1,5 +1,8 @@
 import java.util.function.BinaryOperator;
 
+/**
+ * "Чтец" операций работы над многочленами
+ */
 public class PolynomialOperationReader extends Reader<BinaryOperator<Polynomial>> {
 
     /**
