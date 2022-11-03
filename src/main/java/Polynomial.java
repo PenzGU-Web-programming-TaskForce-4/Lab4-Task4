@@ -18,7 +18,7 @@ public final class Polynomial {
      * @param coefficients Коэффициенты многочлена
      */
     public Polynomial(List<Integer> coefficients) {
-        this.coefficients = coefficients;
+        this.coefficients = coefficients.isEmpty() ? List.of(0) : coefficients;
     }
 
     /**
