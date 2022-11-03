@@ -7,7 +7,8 @@ public class PolynomialReader extends Reader<Polynomial> {
 
     /**
      * Конструктор Reader'а многочленов
-     * @param invitation сообщение оглавляющее сегмент попыток ввода
+     *
+     * @param invitation           сообщение оглавляющее сегмент попыток ввода
      * @param regexTemplateMessage сообщение, показывающее пользователю паттерн чтобы он ему начал соответствовать
      */
     public PolynomialReader(String invitation, String regexTemplateMessage) {
@@ -16,6 +17,7 @@ public class PolynomialReader extends Reader<Polynomial> {
 
     /**
      * Получает из введённой строки числа(коэффициенты многочлена) и создаёт из них объект Многочлена
+     *
      * @param string входящая строка полученная из пользовательского ввода
      * @return Многочлен
      */

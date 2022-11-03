@@ -18,13 +18,14 @@ public class Main {
 
     /**
      * Точка входа Main.main, ну что тут сказать
+     *
      * @param args ничего не принимаем
      */
     public static void main(String[] args) {
         var polynomialReader = new PolynomialReader(INVITATION_MESSAGE, REGEX_TEMPLATE_MESSAGE);
 
         Polynomial a, b;
-        try(var scanner = new Scanner(System.in)) {
+        try (var scanner = new Scanner(System.in)) {
             System.out.println(READING_FIRST_POLYNOMIAL_MESSAGE);
             a = polynomialReader.read(scanner);
             System.out.println(READING_SECOND_POLYNOMIAL_MESSAGE);
@@ -33,9 +34,7 @@ public class Main {
 
         var result = a.multiply(b);
 
-        try (
-            var outWriter = new BufferedWriter(new FileWriter(OUTPUT_RESULTS_FILE))
-        ) {
+        try (var outWriter = new BufferedWriter(new FileWriter(OUTPUT_RESULTS_FILE))) {
             outWriter.append(RESULT_TEMPLATE_MESSAGE.formatted(result.toString()));
         } catch (IOException exception) {
             System.err.printf(ERR_TEMPLATE_MESSAGE, exception.getMessage(), result);

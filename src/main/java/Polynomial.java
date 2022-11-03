@@ -14,6 +14,7 @@ public final class Polynomial {
 
     /**
      * Конструктор многочлена из списка
+     *
      * @param coefficients Коэффициенты многочлена
      */
     public Polynomial(List<Integer> coefficients) {
@@ -29,6 +30,7 @@ public final class Polynomial {
 
     /**
      * Удобный конструктор многочлена из неизвестного количества входящих коэффициентов
+     *
      * @param coefficients Коэффициенты многочлена
      */
     public Polynomial(Integer... coefficients) {
@@ -37,6 +39,7 @@ public final class Polynomial {
 
     /**
      * Фабричный метод для многочлена равного 0
+     *
      * @return "Пустой" многочлен
      */
     public static Polynomial zero() {
@@ -45,8 +48,10 @@ public final class Polynomial {
 
     /**
      * Выдаёт коэффициент при слагаемом многочлена по степени его X'а
+     *
      * @param exp степень x'а в многочлене
-     * @return Коэффициент по его степени или возвращает 0, если такой коэффициент не "записан", т.к. это и означает, что он равен 0
+     * @return Коэффициент по его степени или возвращает 0, если такой коэффициент не "записан", т.к. это и означает,
+     * что он равен 0
      */
     public Integer getCoefficient(int exp) {
         if (maxExp() - exp > coefficients.size() - 1) return 0;
@@ -55,6 +60,7 @@ public final class Polynomial {
 
     /**
      * Возвращает максимальную степень слагаемого в многочлене
+     *
      * @return Максимальную степень многочлена
      */
     public int maxExp() {
@@ -63,8 +69,9 @@ public final class Polynomial {
 
     /**
      * Находит произведение этого многочлена с одним слагаемым многочлена
+     *
      * @param coefficient коэффициент элемента многочлена
-     * @param exp степень X'а элемента многочлена
+     * @param exp         степень X'а элемента многочлена
      * @return Результат умножения этого многочлена на элемент многочлена
      */
     public Polynomial multiply(int coefficient, int exp) {
@@ -82,6 +89,7 @@ public final class Polynomial {
 
     /**
      * Находит произведение этого и поступившего многочлена
+     *
      * @param other второй множитель
      * @return Результат перемножения
      */
@@ -95,6 +103,7 @@ public final class Polynomial {
 
     /**
      * Находит сумму этого и поступившего многочлена
+     *
      * @param other второе слагаемое
      * @return Сумму многочленов
      */
@@ -120,6 +129,7 @@ public final class Polynomial {
 
     /**
      * Возвращает псевдоматематическое отображение многочлена
+     *
      * @return Математическое отображение многочлена
      */
     @Override
@@ -150,10 +160,10 @@ public final class Polynomial {
     }
 
     /**
-     * Возвращает, идентичен ли этот многочлен какому-то объекту,
-     * если этот многочлен и другой многочлен имеют одинаковый список коэффициентов
-     * или у этого и другого многочлена коэффициенты равны 0,
-     * то это значит, что оба наших многочлена равны 0 => многочлены равны
+     * Возвращает, идентичен ли этот многочлен какому-то объекту, если этот многочлен и другой многочлен имеют
+     * одинаковый список коэффициентов или у этого и другого многочлена коэффициенты равны 0, то это значит, что оба
+     * наших многочлена равны 0 => многочлены равны
+     *
      * @param o какой-то объект
      * @return boolean, Равны ли мы
      */
@@ -163,12 +173,13 @@ public final class Polynomial {
         if (o == null || getClass() != o.getClass()) return false;
         var other = (Polynomial) o;
         return coefficients.equals(other.coefficients) ||
-               coefficients.stream().allMatch((it) -> it == 0) &&
-               other.coefficients.stream().allMatch((it) -> it == 0);
+                coefficients.stream().allMatch((it) -> it == 0) &&
+                        other.coefficients.stream().allMatch((it) -> it == 0);
     }
 
     /**
      * Возвращает хэшкод единственного поля
+     *
      * @return Хэшкод единственного поля
      */
     @Override
@@ -177,13 +188,14 @@ public final class Polynomial {
     }
 
     /**
-     * Итератор, позволяющий пройтись пошагово по цепочке действий меж многочленами,
-     * где выражение вида p1 + p2 * p3, где pn - многочлен должно будет создано таким образом:
+     * Итератор, позволяющий пройтись пошагово по цепочке действий меж многочленами, где выражение вида p1 + p2 * p3,
+     * где pn - многочлен должно будет создано таким образом:
      * <pre>{@code new CalculationsIterator(
      *     List.of(p2, p3, p1),
      *     List.of(Polynomial::multiply, Polynomial::plus)
      * );}</pre>
      * А для более сложных операций этот итератор не создавался
+     *
      * @see "PolynomialTest::CalculationsIteratorTest"
      */
     public static final class CalculationsIterator implements Iterator<Polynomial> {
@@ -195,9 +207,10 @@ public final class Polynomial {
 
         /**
          * Конструктор просо передающий аргументы и операции
-         * @throws AssertionError если количество операций != количеству аргументов + 1
-         * @param args слагаемые и множители по которым будут произведены операции
+         *
+         * @param args       слагаемые и множители по которым будут произведены операции
          * @param operations операции
+         * @throws AssertionError если количество операций != количеству аргументов + 1
          */
         public CalculationsIterator(List<Polynomial> args, List<BinaryOperator<Polynomial>> operations) {
             assert operations.size() == args.size() - 1;
@@ -207,6 +220,7 @@ public final class Polynomial {
 
         /**
          * Говорит, остались ли ещё операции для выполнения
+         *
          * @return boolean, о том, остались ли ещё операции для выполнения
          */
         @Override
@@ -216,6 +230,7 @@ public final class Polynomial {
 
         /**
          * Производит операцию и возвращает результат
+         *
          * @return возвращает результат по одной операции
          */
         @Override

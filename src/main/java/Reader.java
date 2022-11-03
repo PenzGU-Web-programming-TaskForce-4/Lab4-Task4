@@ -3,6 +3,7 @@ import java.util.regex.Pattern;
 
 /**
  * Абстрактный класс занимающийся переработкой вводимых пользовательских строк в какие-либо объекты
+ *
  * @param <T> Выходной тип
  */
 public abstract class Reader<T> {
@@ -13,8 +14,10 @@ public abstract class Reader<T> {
 
     /**
      * Основной конструктор принимающий все значения для полей абстрактного Reader'а
-     * @param invitationMessage сообщение оглавляющее сегмент попыток ввода
-     * @param regex паттерн, которому должно будет соответствовать пользовательский ввод, определяется в наследных классах, где и будет определён парсинг
+     *
+     * @param invitationMessage    сообщение оглавляющее сегмент попыток ввода
+     * @param regex                паттерн, которому должно будет соответствовать пользовательский ввод, определяется в
+     *                             наследных классах, где и будет определён парсинг
      * @param regexTemplateMessage сообщение, показывающее пользователю паттерн чтобы он ему начал соответствовать
      */
     public Reader(String invitationMessage, String regex, String regexTemplateMessage) {
@@ -25,6 +28,7 @@ public abstract class Reader<T> {
 
     /**
      * Парсит пользовательскую строку в объект
+     *
      * @param string входящая строка полученная из пользовательского ввода
      * @return распарсенный объект
      */
@@ -32,9 +36,10 @@ public abstract class Reader<T> {
 
     /**
      * Читает пользовательский ввод и парсит его с помощью абстрактного метода Reader::parse
-     * @see #parse
+     *
      * @param scanner предоставляет доступ к пользовательскому вводу
      * @return распарсенный объект
+     * @see #parse
      */
     final public T read(Scanner scanner) {
         System.out.println(invitationMessage);
