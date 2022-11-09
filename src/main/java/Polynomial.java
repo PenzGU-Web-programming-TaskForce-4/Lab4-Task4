@@ -1,6 +1,8 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.BinaryOperator;
-import java.util.stream.IntStream;
 
 /**
  * Это многочлен
@@ -94,11 +96,12 @@ public final class Polynomial {
      * @return Результат перемножения
      */
     public Polynomial multiply(Polynomial other) {
-        return IntStream
-                .range(0, other.coefficients.size()) // индексы
-                .map((i) -> other.maxExp() - i) // индексы в степени
-                .mapToObj((exp) -> multiply(other.getCoefficient(exp), exp)) // перемножает этот многочлен на каждое слагаемое другого многочлена
-                .reduce(Polynomial.zero(), Polynomial::plus); // суммирует слагаемые
+        Polynomial product = Polynomial.zero();
+        for (int exp = 0; exp < maxExp(); exp++) {
+            Polynomial term = this.multiply(other.getCoefficient(exp), exp);
+            product = product.plus(term);
+        }
+        return product;
     }
 
     /**
