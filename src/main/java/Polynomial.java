@@ -175,9 +175,10 @@ public final class Polynomial {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         var other = (Polynomial) o;
-        return coefficients.equals(other.coefficients) ||
-                coefficients.stream().allMatch((it) -> it == 0) &&
-                        other.coefficients.stream().allMatch((it) -> it == 0);
+        var isCoefficientsAreEqual = coefficients.equals(other.coefficients);
+        var isThisCoefficientsEqZero = coefficients.stream().allMatch((it) -> it == 0);
+        var isOtherCoefficientsEqZero = other.coefficients.stream().allMatch((it) -> it == 0);
+        return isCoefficientsAreEqual || isThisCoefficientsEqZero && isOtherCoefficientsEqZero;
     }
 
     /**
